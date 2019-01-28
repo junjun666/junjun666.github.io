@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-27T03:22:21.234Z</updated>
+  <updated>2019-01-28T09:37:37.400Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git高级知识点</title>
+    <link href="http://yoursite.com/2019/01/28/git%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <id>http://yoursite.com/2019/01/28/git高级知识点/</id>
+    <published>2019-01-28T09:34:10.000Z</published>
+    <updated>2019-01-28T09:37:37.400Z</updated>
+    
+    <content type="html"><![CDATA[<p>在今年的 Stack Overflow 开发者调查报告中，超过 70% 的开发者使用 Git，使其成为世界上使用人数最多的版本控制系统。Git 通常用于开源和商业软件开发，对个人、团队和企业都颇有益处。</p><p>###Q1: 什么是 Git 复刻（fork）？复刻（fork）、分支（branch）和克隆（clone）之间有什么区别？</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1)复刻（fork） 是对存储仓库（repository）进行的远程的、服务器端的拷贝，从源头上就有所区别。复刻实际上不是 Git 的范畴。它更像是个政治/社会概念。</span><br><span class="line">2)克隆（<span class="built_in">clone</span>） 不是复刻，克隆是个对某个远程仓库的本地拷贝。克隆时，实际上是拷贝整个源存储仓库，包括所有历史记录和分支。</span><br><span class="line">3)分支（branch） 是一种机制，用于处理单一存储仓库中的变更，并最终目的是用于与其他部分代码合并。</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在今年的 Stack Overflow 开发者调查报告中，超过 70% 的开发者使用 Git，使其成为世界上使用人数最多的版本控制系统。Git 通常用于开源和商业软件开发，对个人、团队和企业都颇有益处。&lt;/p&gt;
+&lt;p&gt;###Q1: 什么是 Git 复刻（fork）？复刻（f
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>

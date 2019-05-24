@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-17T11:37:22.495Z</updated>
+  <updated>2019-05-24T14:52:50.078Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>轻量级js框架--zepto.js</title>
+    <link href="http://yoursite.com/2019/05/18/zepto/"/>
+    <id>http://yoursite.com/2019/05/18/zepto/</id>
+    <published>2019-05-18T07:34:00.000Z</published>
+    <updated>2019-05-24T14:52:50.078Z</updated>
+    
+    <content type="html"><![CDATA[<p>之所以说Zepto和JQuery超级像，是因为他们的用法一样，除了有那么一点不同之外，基本没有任何区别，如果你会用JQuery，那么，你就会用Zepto。<br>但是相比较之下，Zepto是比JQuery更加轻量级的一款JavaScript库，更加倾向于应用的开发。</p><p>zepto.js是简化的javascript库<br>zepto的API是参考jQuery的API</p><p>zepto中touch相关事件<br>touchstart<br>touchstart是手指刚触摸到元素时触发的事件<br>touchmove<br>touchmove是手指移动时触发的事件<br>touchend<br>当手指离开指定元素时触发</p><p>用法基本跟jQuery一致，直接上手使用即可。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;之所以说Zepto和JQuery超级像，是因为他们的用法一样，除了有那么一点不同之外，基本没有任何区别，如果你会用JQuery，那么，你就会用Zepto。&lt;br&gt;但是相比较之下，Zepto是比JQuery更加轻量级的一款JavaScript库，更加倾向于应用的开发。&lt;/p&gt;
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>gulp4 用法</title>

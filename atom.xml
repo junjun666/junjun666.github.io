@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-24T14:52:50.078Z</updated>
+  <updated>2019-05-25T03:16:58.392Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>webpack</title>
+    <link href="http://yoursite.com/2019/05/24/webpack/"/>
+    <id>http://yoursite.com/2019/05/24/webpack/</id>
+    <published>2019-05-24T14:59:43.000Z</published>
+    <updated>2019-05-25T03:16:58.392Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1-什么是webpack"><a href="#1-什么是webpack" class="headerlink" title="1:什么是webpack?"></a>1:什么是webpack?</h3><p>它做的事情是，分析你的项目结构，找到JavaScript模块以及其它的一些浏览器不能直接运行的拓展语言（Scss，TypeScript等），并将其打包为合适的格式以供浏览器使用。</p><h3 id="2-为什么要用webpack"><a href="#2-为什么要用webpack" class="headerlink" title="2:为什么要用webpack?"></a>2:为什么要用webpack?</h3><p>1)模块化，让我们可以把复杂的程序细化为小的文件;<br>2)类似于TypeScript这种在JavaScript基础上拓展的开发语言：使我们能够实现目前版本的JavaScript不能直接使用的特性，并且之后还能能转换为JavaScript文件使浏览器可以识别；<br>3)scss，less等CSS预处理器<br>………<br>这些改进确实大大的提高了我们的开发效率，但是利用它们开发的文件往往需要进行额外的处理才能让浏览器识别,而手动处理又是非常繁琐的，这就为WebPack类的工具的出现提供了需求。</p><h3 id="3-webpack相对于其他前端自动化构建工具的优势所在？"><a href="#3-webpack相对于其他前端自动化构建工具的优势所在？" class="headerlink" title="3:webpack相对于其他前端自动化构建工具的优势所在？"></a>3:webpack相对于其他前端自动化构建工具的优势所在？</h3><h4 id="优点：模块化"><a href="#优点：模块化" class="headerlink" title="优点：模块化"></a>优点：模块化</h4><p>在webpack看来一切都是模块！这就是它不可不说的优点，包括你的JavaScript代码，也包括CSS和fonts以及图片等等等，只有通过合适的loaders，它们都可以被当做模块被处理。</p><h3 id="4-1-webpack的安装"><a href="#4-1-webpack的安装" class="headerlink" title="4.1:webpack的安装"></a>4.1:webpack的安装</h3><p>在开始之前，请确保安装了 Node.js 的最新版本<br>1)要安装最新版本或特定版本，请运行以下命令之一：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev webpack</span><br><span class="line">npm install --save-dev webpack@&lt;version&gt;</span><br></pre></td></tr></table></figure></p><p>2)如果你使用 webpack 4+ 版本，你还需要安装 CLI。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev webpack-cli</span><br></pre></td></tr></table></figure></p><p>3)对于大多数项目，我们建议本地安装。这可以使我们在引入破坏式变更(breaking change)的依赖时，更容易分别升级项目。通常，webpack 通过运行一个或多个 npm scripts，会在本地 node_modules 目录中查找安装的 webpack：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;start&quot;: &quot;webpack --config webpack.config.js&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>4)总结来说3个基础安装步骤<br>mkdir webpack-demo &amp;&amp; cd webpack-demo<br>npm init -y<br>npm install webpack webpack-cli –save-dev</p><h3 id="4-2-webpack的简单入门"><a href="#4-2-webpack的简单入门" class="headerlink" title="4.2:webpack的简单入门"></a>4.2:webpack的简单入门</h3><p>配置文件webpack.config.js<br>1)入口entry和出口output<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">  entry: &apos;./path/to/my/entry/file.js&apos;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, &apos;dist&apos;),</span><br><span class="line">    filename: &apos;my-first-webpack.bundle.js&apos;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p><p>2)loader加载器<br>原理:loader 用于对模块的源代码进行转换。loader 可以使你在 import 或”加载”模块时预处理文件。因此，loader 类似于其他构建工具中“任务(task)”，并提供了处理前端构建步骤的强大方法。loader 可以将文件从不同的语言（如 TypeScript）转换为 JavaScript，或将内联图像转换为 data URL。loader 甚至允许你直接在 JavaScript 模块中 import CSS文件！</p><p>1:首先安装对应的loader<br>告诉webpack加载css文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev css-loader</span><br></pre></td></tr></table></figure></p><p>将 TypeScript 转为 JavaScript<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev ts-loader</span><br></pre></td></tr></table></figure></p><p>2:在webpack.config.js中进行配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">  module: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123; test: /\.css$/, use: &apos;css-loader&apos; &#125;,</span><br><span class="line">      &#123; test: /\.ts$/, use: &apos;ts-loader&apos; &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p><p>3)插件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">const HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;); //通过 npm 安装</span><br><span class="line">const webpack = require(&apos;webpack&apos;); //访问内置的插件</span><br><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line"></span><br><span class="line">const config = &#123;</span><br><span class="line">  entry: &apos;./path/to/my/entry/file.js&apos;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: &apos;my-first-webpack.bundle.js&apos;,</span><br><span class="line">    path: path.resolve(__dirname, &apos;dist&apos;)</span><br><span class="line">  &#125;,</span><br><span class="line">  module: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: /\.(js|jsx)$/,</span><br><span class="line">        use: &apos;babel-loader&apos;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    new webpack.optimize.UglifyJsPlugin(),</span><br><span class="line">    new HtmlWebpackPlugin(&#123;template: &apos;./src/index.html&apos;&#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">module.exports = config;</span><br></pre></td></tr></table></figure></p><h3 id="5-webpack支持的模块？"><a href="#5-webpack支持的模块？" class="headerlink" title="5:webpack支持的模块？"></a>5:webpack支持的模块？</h3><p>webpack 通过 loader 可以支持各种语言和预处理器编写模块。loader 描述了 webpack 如何处理 非 JavaScript(non-JavaScript) _模块_，并且在 bundle 中引入这些依赖。 webpack 社区已经为各种流行语言和语言处理器构建了 loader，包括：</p><p>1)CoffeeScript<br>2)TypeScript<br>3)ESNext (Babel)<br>4)Sass<br>5)Less<br>6)Stylus<br>总的来说，webpack 提供了可定制的、强大和丰富的 API，允许任何技术栈使用 webpack，保持了在你的开发、测试和生成流程中无侵入性(non-opinionated)。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;1-什么是webpack&quot;&gt;&lt;a href=&quot;#1-什么是webpack&quot; class=&quot;headerlink&quot; title=&quot;1:什么是webpack?&quot;&gt;&lt;/a&gt;1:什么是webpack?&lt;/h3&gt;&lt;p&gt;它做的事情是，分析你的项目结构，找到JavaScript
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>轻量级js框架--zepto.js</title>
@@ -51,27 +72,6 @@
       
       
         &lt;h3 id=&quot;gulp是什么呢&quot;&gt;&lt;a href=&quot;#gulp是什么呢&quot; class=&quot;headerlink&quot; title=&quot;gulp是什么呢&quot;&gt;&lt;/a&gt;gulp是什么呢&lt;/h3&gt;&lt;p&gt;Gulp 是基于 NodeJS 的前端自动化构建工具，在项目开发过程中自动化地完成 html
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2019/05/17/hello-world/"/>
-    <id>http://yoursite.com/2019/05/17/hello-world/</id>
-    <published>2019-05-17T09:35:07.322Z</published>
-    <updated>2019-02-02T14:54:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
       
     
     </summary>

@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/09/27/chrome-panel/</loc>
+    
+    <lastmod>2019-09-27T07:09:37.403Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/09/17/html-webpack-plugin/</loc>
+    
+    <lastmod>2019-09-17T07:33:44.587Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/08/12/this/</loc>
     
     <lastmod>2019-09-10T03:43:30.000Z</lastmod>

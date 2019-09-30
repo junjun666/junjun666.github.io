@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/09/30/react-PureComponent/</loc>
+    
+    <lastmod>2019-09-30T04:59:03.446Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/09/29/react-msg-transmit/</loc>
     
     <lastmod>2019-09-29T09:02:30.198Z</lastmod>

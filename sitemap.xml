@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/08/12/this/</loc>
+    
+    <lastmod>2019-10-04T09:28:18.228Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/02/14/http/</loc>
+    
+    <lastmod>2019-10-03T08:57:22.687Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/09/30/react-PureComponent/</loc>
     
     <lastmod>2019-09-30T04:59:03.446Z</lastmod>
@@ -30,23 +44,9 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2019/08/12/this/</loc>
-    
-    <lastmod>2019-09-10T03:43:30.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2019/08/23/goodblog/</loc>
     
     <lastmod>2019-09-09T06:59:36.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/02/14/http/</loc>
-    
-    <lastmod>2019-08-31T10:27:20.000Z</lastmod>
     
   </url>
   

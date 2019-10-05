@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/08/13/cross-domain/</loc>
+    
+    <lastmod>2019-10-05T07:30:31.207Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/08/12/this/</loc>
     
     <lastmod>2019-10-04T10:31:03.165Z</lastmod>
@@ -68,13 +75,6 @@
     <loc>http://yoursite.com/2019/08/14/preloading/</loc>
     
     <lastmod>2019-08-17T03:48:10.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/08/13/cross-domain/</loc>
-    
-    <lastmod>2019-08-13T10:17:10.000Z</lastmod>
     
   </url>
   

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-30T04:59:03.446Z</updated>
+  <updated>2019-10-09T07:11:10.900Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>React中createElement 和 cloneElement 的区别</title>
+    <link href="http://yoursite.com/2019/10/09/create-clone-element/"/>
+    <id>http://yoursite.com/2019/10/09/create-clone-element/</id>
+    <published>2019-10-09T06:03:56.000Z</published>
+    <updated>2019-10-09T07:11:10.900Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="React-createElement"><a href="#React-createElement" class="headerlink" title="React.createElement()"></a>React.createElement()</h3><p>JSX 语法就是用React.createElement()来构建 React 元素的。它接受三个参数：<br>1)第一个参数可以是一个标签名。如div、span，或者 React 组件。<br>2)第二个参数为传入的属性。<br>3)第三个以及之后的参数，皆作为组件的子组件。<br>其基本结构如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">React.createElement(</span><br><span class="line">    type,</span><br><span class="line">    [props],</span><br><span class="line">    [...children]</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p><p>让我们看一下它实际的两种写法:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">写法一：</span><br><span class="line"></span><br><span class="line">var child1 = React.createElement(&apos;li&apos;, null, &apos;one&apos;);</span><br><span class="line">var child2 = React.createElement(&apos;li&apos;, null, &apos;two&apos;);</span><br><span class="line">var content = React.createElement(&apos;ul&apos;, &#123; className: &apos;teststyle&apos; &#125;, child1, child2); // 第三个参数可以分开也可以写成一个数组</span><br><span class="line">ReactDOM.render(</span><br><span class="line">    content,</span><br><span class="line">    document.getElementById(&apos;example&apos;)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">写法二：</span><br><span class="line"></span><br><span class="line">var child1 = React.createElement(&apos;li&apos;, null, &apos;one&apos;);</span><br><span class="line">var child2 = React.createElement(&apos;li&apos;, null, &apos;two&apos;);</span><br><span class="line">var content = React.createElement(&apos;ul&apos;, &#123; className: &apos;teststyle&apos; &#125;, [child1, child2]);</span><br><span class="line">ReactDOM.render(</span><br><span class="line">    content,</span><br><span class="line">    document.getElementById(&apos;example&apos;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p><p>在我们应用JSX进行开发的时候，其实它最终会转化成React.createElement…去创建元素。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//JSX写法：</span><br><span class="line"></span><br><span class="line">class Hello extends React.Component &#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        return &lt;div&gt;Hello, &#123; this.props.toWhat &#125;&lt;/div&gt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">    &lt;Hello toWhat=‘world’&gt;,</span><br><span class="line">    document.getElementById(‘root’)</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 转化为原生JS后的写法</span><br><span class="line"></span><br><span class="line">class Hello extends React.Component &#123;</span><br><span class="line">    render()&#123;</span><br><span class="line">        return React.createElement(‘div’,null, `Hello,$&#123;this.props.toWhat&#125;`)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">    React.createElement(Hello, &#123; toWhat: ‘world’ &#125;, null),</span><br><span class="line">    document.getElementById(‘root’)</span><br><span class="line">)</span><br></pre></td></tr></table></figure><h3 id="React-cloneElement"><a href="#React-cloneElement" class="headerlink" title="React.cloneElement()"></a>React.cloneElement()</h3><p>React.cloneElement()与React.createElement()相似，不同的是它传入的第一个参数是一个 React 元素，而不是标签名或组件。<br>其基本结构如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">React.cloneElement(</span><br><span class="line">  element,</span><br><span class="line">  [props],</span><br><span class="line">  [...children]</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p><p>(重点记住定义)克隆并返回一个新的 ReactElement （内部子元素也会跟着克隆），新返回的元素会保留有旧元素的 props、ref、key，也会集成新的 props（只要在第二个参数中有定义）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">var Li = React.createClass(&#123;</span><br><span class="line">    render: function() &#123;</span><br><span class="line">        return &lt;li&gt;&#123;this.props.i&#125;&lt;/li&gt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">var Ul = React.createClass(&#123;</span><br><span class="line">    deal : function(child, index)&#123;</span><br><span class="line">        //注意下面这行换成 createElement 会报错！因为child是ReactElement而不是ReactClass或字符串</span><br><span class="line">        return React.cloneElement(child, &#123;i:index&#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    render: function() &#123;</span><br><span class="line">        return &lt;ul&gt;&#123;this.props.children.map(this.deal)&#125;&lt;/ul&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">React.render((</span><br><span class="line">    &lt;Ul&gt;</span><br><span class="line">        &lt;Li i=&quot;9&quot; /&gt;</span><br><span class="line">        &lt;Li i=&quot;8&quot; /&gt;</span><br><span class="line">        &lt;Li i=&quot;7&quot; /&gt;</span><br><span class="line">    &lt;/Ul&gt;</span><br><span class="line">), document.body);</span><br></pre></td></tr></table></figure></p><p>参考资料：<br><a href="https://blog.csdn.net/u013558749/article/details/80268449" target="_blank" rel="noopener">React.createElement的理解使用</a><br><a href="https://zhirongyuan.github.io/blog/2017/03/10/Blog-entry-two.html" target="_blank" rel="noopener">React 克隆组件 —– React.cloneElement</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;React-createElement&quot;&gt;&lt;a href=&quot;#React-createElement&quot; class=&quot;headerlink&quot; title=&quot;React.createElement()&quot;&gt;&lt;/a&gt;React.createElement()&lt;/h3&gt;&lt;
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>react性能优化之PureComponent(重点)</title>
@@ -94,27 +115,6 @@
       
       
         &lt;p&gt;这里只介绍开发时用法，基础知识详见笔记&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;lin
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2019/09/10/hello-world/"/>
-    <id>http://yoursite.com/2019/09/10/hello-world/</id>
-    <published>2019-09-10T08:17:44.687Z</published>
-    <updated>2019-02-02T14:54:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
       
     
     </summary>

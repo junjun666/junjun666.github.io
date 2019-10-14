@@ -7,7 +7,11 @@
 <h3 id="三-强语言和弱语言"><a href="#三-强语言和弱语言" class="headerlink" title="三: 强语言和弱语言"></a>三: 强语言和弱语言</h3><p>强语言要求变量的使用要严格符合定义，所有变量都必须先定义后使用。所以，一旦一个变量被指定了某个数据类型，如果不经过强制转换，那么它就永远是这个数据类型了，无法再更改了。</p>
 <p>(java、C++)(Python属于强类型的动态脚本语言)(强类型：不予许不同类型相加/动态：不使用显示数据声明类型，且确定一个变量的类型是第一次给他赋值的时候/脚本语言：一般也是解释性语言，运行代码只需要一个解释器，不需要编译)</p>
 <p>弱语言是数据类型可以被忽略的语言， 一个变量可以赋值给不同数据类型的值。(php,js)</p>
-<h3 id="四：进程和线程"><a href="#四：进程和线程" class="headerlink" title="四：进程和线程"></a>四：进程和线程</h3><p>线程不能单独存在，它是由进程来启动和管理的。<br>那么进程时什么嘞？<br>参考资料：<br><a href="https://www.jianshu.com/p/df130352d2ed" target="_blank" rel="noopener">js单例模式</a><br>[]</p>
+<h3 id="四：进程和线程"><a href="#四：进程和线程" class="headerlink" title="四：进程和线程"></a>四：进程和线程</h3><p>说一下线程<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">多线程可以并行处理任务，线程不能单独存在，它是由进程来启动和管理的。</span><br><span class="line"></span><br><span class="line">那么进程是什么嘞</span><br></pre></td></tr></table></figure></p>
+<p>一个进程是一个程序的运行实例。</p>
+<p>总结：所以线程依附于进程，而进程中使用多线程并行处理能提升运算效率。</p>
+<p>以下是进程和线程其四个特点：<br>1）进程中任意一线程执行出错，都会导致整个进程的崩溃。<br>2）线程之间共享进程中的数据。<br>3）当一个进程关闭之后，操作系统会回收进程所占用的内存。<br>4）进程之间的内容相互隔离。</p>
+<p>那么之前单进程浏览器时代：浏览器所有的功能模块都是运行在同一个进程里，所以会出现以下几个问题：<br>1)不稳定<br>2)不流畅<br>3)不安全<br>那么对于现在多进程浏览器时代解决了上述问题，那么最新的Chrome进程架构包括：<br>一个浏览器主进程、一个GPU进程、一个网络进程、多个渲染进程和多个插件进程。<br>参考资料：<br><a href="https://www.jianshu.com/p/df130352d2ed" target="_blank" rel="noopener">js单例模式</a><br>[]</p>
 </article><ul class="pager blog-pager"><li class="next"><a href="/2019/10/09/create-clone-element/" data-toggle="tooltip" data-placement="top" title="React中createElement 和 cloneElement 的区别">Next Post →</a></li></ul><div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div><script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"> </script><script>var cloudTieConfig = {
   url: document.location.href, 
   sourceId: "",

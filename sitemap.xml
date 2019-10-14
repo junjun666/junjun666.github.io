@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/10/13/knowledge-sum/</loc>
+    
+    <lastmod>2019-10-13T10:48:26.612Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/08/23/goodblog/</loc>
+    
+    <lastmod>2019-10-12T07:44:58.569Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/10/09/create-clone-element/</loc>
     
     <lastmod>2019-10-09T07:11:10.900Z</lastmod>
@@ -54,13 +68,6 @@
     <loc>http://yoursite.com/2019/09/17/html-webpack-plugin/</loc>
     
     <lastmod>2019-09-17T07:33:44.587Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/08/23/goodblog/</loc>
-    
-    <lastmod>2019-09-09T06:59:36.000Z</lastmod>
     
   </url>
   
